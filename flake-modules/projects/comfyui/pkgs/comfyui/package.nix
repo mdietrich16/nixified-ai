@@ -18,7 +18,9 @@ let
   # TODO: Maybe we should have a golden test, to check whether new folders have been unexpectedly added upstream
   supportedFolders = lib.attrNames (builtins.readDir (comfyuiPackages.comfyui-unwrapped.src + "/models"));
 
-  unsupportedFolders = lib.flatten (map (f: f.comfyui.installPaths) models);
+  unsupportedFolders = lib.unique (
+    lib.flatten (map (f: builtins.head (map (p: builtins.split "/" p) f.comfyui.installPaths)) models)
+  );
 
   createModelsDir = models: let
     # Creates entires for the second linkFarm argument like:
@@ -27,7 +29,7 @@ let
       map (installPath: let
         name = "${python3Packages.python.sitePackages}/models/${installPath}/${modelDrv.name}";
         traceMessage = ''
-          installPath "${installPath}" for "${modelDrv.name}" does not occur in the models folder upstream, so may be unused comfyui at runtime
+          installPath "${installPath}" for "${modelDrv.name}" does not occur in the models folder upstream, so may be unused by comfyui at runtime
         '';
         checkedName = lib.warnIfNot (lib.elem installPath supportedFolders) traceMessage name;
       in {
