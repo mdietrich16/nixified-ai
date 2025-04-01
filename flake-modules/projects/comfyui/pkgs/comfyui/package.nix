@@ -18,20 +18,19 @@ let
   # TODO: Maybe we should have a golden test, to check whether new folders have been unexpectedly added upstream
   supportedFolders = lib.attrNames (builtins.readDir (comfyuiPackages.comfyui-unwrapped.src + "/models"));
 
-  unsupportedFolders = lib.unique (
-    lib.flatten (map (f: builtins.head (map (p: builtins.split "/" p) f.comfyui.installPaths)) models)
-  );
 
+  unsupportedFolders = lib.flatten (map (m: map (p: (if lib.isAttrs p then p else { name = p; path = p; installPath = p;})) m.comfyui.installPaths) models);
   createModelsDir = models: let
     # Creates entires for the second linkFarm argument like:
     # [ { name = "hello-test"; path = pkgs.hello; } ]
     linkFarmEntries = builtins.concatMap (modelDrv:
       map (installPath: let
-        name = "${python3Packages.python.sitePackages}/models/${installPath}/${modelDrv.name}";
+        iPath = if installPath ? installPath then installPath.installPath else (if installPath ? path then installPath.path else installPath);
+        name = "${python3Packages.python.sitePackages}/models/${iPath}/${modelDrv.name}";
         traceMessage = ''
-          installPath "${installPath}" for "${modelDrv.name}" does not occur in the models folder upstream, so may be unused by comfyui at runtime
+          installPath "${iPath}" for "${modelDrv.name}" does not occur in the models folder upstream, so may be unused by comfyui at runtime
         '';
-        checkedName = lib.warnIfNot (lib.elem installPath supportedFolders) traceMessage name;
+        checkedName = lib.warnIfNot (lib.elem iPath supportedFolders) traceMessage name;
       in {
         name = checkedName;
         path = modelDrv;
@@ -43,7 +42,7 @@ let
     modelsDir = "${createModelsDir models}/${python3Packages.python.sitePackages}";
   in writeTextFile {
     name = "extra_model_paths.yaml";
-    text = lib.generators.toYAML {} ({ comfyui = ((lib.genAttrs (supportedFolders ++ unsupportedFolders) (nodeName: "${modelsDir}/models/${nodeName}")) // { custom_nodes = "@CUSTOM_NODES@"; }); });
+    text = lib.generators.toYAML {} ({ comfyui = ((lib.genAttrs supportedFolders  (nodeName: "${modelsDir}/models/${nodeName}") // lib.listToAttrs (map (f: { inherit (f) name; value =  "${modelsDir}/models/${f.path}"; }) unsupportedFolders)) // { custom_nodes = "@CUSTOM_NODES@"; }); });
   };
 in
 symlinkJoin {
