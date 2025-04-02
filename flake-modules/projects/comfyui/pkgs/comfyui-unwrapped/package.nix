@@ -8,13 +8,13 @@ let
 in
 python3Packages.buildPythonApplication rec {
   pname = "comfyui";
-  version = "0.3.9";
+  version = "0.3.18";
 
   src = fetchFromGitHub {
     owner = "comfyanonymous";
     repo = "ComfyUI";
     rev = "v${version}";
-    hash = "sha256-3D3Xk7yDesAjHIgBBCHOQFGt1HsGVBSXUi6zsW1dgcs=";
+    hash = "sha256-oAsBE4wLdYh+RE7sWUrryv0/w55u73yLH+IJcHduwrs=";
   };
 
   dependencies = with python3Packages; [
