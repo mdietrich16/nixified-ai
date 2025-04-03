@@ -33,6 +33,7 @@ python3Packages.buildPythonApplication rec {
     scipy
     tqdm
     psutil
+    av
 
     # optional dependencies
     kornia
