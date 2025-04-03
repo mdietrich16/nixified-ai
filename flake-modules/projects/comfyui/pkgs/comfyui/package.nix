@@ -32,7 +32,7 @@ let
         '';
         checkedName = lib.warnIfNot (lib.elem iPath supportedFolders) traceMessage name;
       in {
-        name = checkedName;
+        name = name;
         path = modelDrv;
       }) modelDrv.passthru.comfyui.installPaths
     ) models;
