@@ -93,8 +93,8 @@ comfyuiPackages.comfyui.mkComfyUICustomNode rec {
       depth_anything_vitl14 = depth_anything "depth_anything_vitl14.pth";
       depth_anything_vits14 = depth_anything "depth_anything_vits14.pth";
       depth_anything_v2_vitb = fetchFromUrl {
-        url = "https://huggingface.co/depth/Depth-Anything-V2-Base/resolve/main/depth_anything_v2_vitb.pth";
-        sha256 = "sha256-DStwAuYtOdZVVxw3EzM0C9iPZ6uVBQwDWRVVqgVkUyg=";
+        url = "https://huggingface.co/depth-anything/Depth-Anything-V2-Base/resolve/main/depth_anything_v2_vitb.pth";
+        sha256 = "0d2b7002e62d39d655571c371333340bd88f67ab95050c03591555aa05645328";
       };
     in
     ''
