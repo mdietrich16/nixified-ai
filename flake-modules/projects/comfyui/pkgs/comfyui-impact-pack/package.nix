@@ -1,9 +1,10 @@
-{ comfyuiPackages,
+{
+  comfyuiPackages,
   python3Packages,
-  fetchFromGitHub
+  fetchFromGitHub,
 }:
 let
-  segment-anything = python3Packages.callPackage ../../../../packages/segment-anything {};
+  segment-anything = python3Packages.callPackage ../../../../packages/segment-anything { };
 in
 comfyuiPackages.comfyui.mkComfyUICustomNode {
   pname = "comfyui-impact-pack";
@@ -26,6 +27,8 @@ comfyuiPackages.comfyui.mkComfyUICustomNode {
   src = fetchFromGitHub {
     owner = "ltdrdata";
     repo = "ComfyUI-Impact-Pack";
+    # rev = "8.10";
+    # hash = "sha256-GoRtQus50OsAD57rH7tCwAaIkM/wJaBx75/5aVnCFOo=";
     rev = "21eecb0c03223c7823cb19b318011fba3143da92";
     hash = "sha256-JJUDRQRvC9+z/UEJz5NChANQq2WsI6dzzarttGWjKxk=";
   };
