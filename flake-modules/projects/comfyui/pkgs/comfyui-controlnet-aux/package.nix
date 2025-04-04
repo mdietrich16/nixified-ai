@@ -5,6 +5,7 @@
 }:
 let
   fetchFromUrl = import <nix/fetchurl.nix>;
+  mediapipe = python3Packages.callPackage ../../../../packages/mediapipe { };
 in
 comfyuiPackages.comfyui.mkComfyUICustomNode rec {
   pname = "comfyui-controlnet-aux";
