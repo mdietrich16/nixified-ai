@@ -3,7 +3,7 @@
   fetchFromGitHub,
 }:
 comfyuiPackages.comfyui.mkComfyUICustomNode {
-  pname = "ComfyUI_UltimateSDUpscale";
+  pname = "comfyui-ultimate-sd-upscale";
   version = "unstable-2024-08-16";
   src = fetchFromGitHub {
     owner = "ssitu";

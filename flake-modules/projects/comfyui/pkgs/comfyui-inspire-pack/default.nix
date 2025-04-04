@@ -4,7 +4,7 @@
   fetchFromGitHub,
 }:
 comfyuiPackages.comfyui.mkComfyUICustomNode rec {
-  pname = "ComfyUI-Inspire-Pack";
+  pname = "comfyui-inspire-pack";
   version = "v1.2.9";
   src = fetchFromGitHub {
     owner = "ltdrdata";

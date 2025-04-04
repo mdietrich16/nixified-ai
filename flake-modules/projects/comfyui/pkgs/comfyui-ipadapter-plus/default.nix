@@ -4,7 +4,7 @@
   fetchFromGitHub,
 }:
 comfyuiPackages.comfyui.mkComfyUICustomNode {
-  pname = "ComfyUI_IPAdapter_plus";
+  pname = "comfyui-ipadapter-plus";
   version = "unstable-2024-06-05";
   src = fetchFromGitHub {
     owner = "cubiq";

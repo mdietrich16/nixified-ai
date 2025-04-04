@@ -4,7 +4,7 @@
   fetchFromGitHub,
 }:
 comfyuiPackages.comfyui.mkComfyUICustomNode {
-  pname = "ComfyUI-Impact-Subpack";
+  pname = "comfyui-impact-subpack";
   version = "v1.2.9";
   src = fetchFromGitHub {
     owner = "ltdrdata";

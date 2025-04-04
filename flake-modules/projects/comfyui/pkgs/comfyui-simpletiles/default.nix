@@ -3,7 +3,7 @@
   fetchFromGitHub,
 }:
 comfyuiPackages.comfyui.mkComfyUICustomNode {
-  pname = "ComfyUI_SimpleTiles";
+  pname = "comfyui-simpletiles";
   version = "v0.0.1";
   src = fetchFromGitHub {
     owner = "kinfolk0117";

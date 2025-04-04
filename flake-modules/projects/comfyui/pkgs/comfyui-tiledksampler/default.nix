@@ -3,7 +3,7 @@
   fetchFromGitHub,
 }:
 comfyuiPackages.comfyui.mkComfyUICustomNode {
-  pname = "ComfyUI-TiledKSampler";
+  pname = "comfyui-tiledksampler";
   version = "v0.0.1";
   src = fetchFromGitHub {
     owner = "BlenderNeko";

@@ -3,7 +3,7 @@
   fetchFromGitHub,
 }:
 comfyuiPackages.comfyui.mkComfyUICustomNode {
-  pname = "ComfyUI-TiledDiffusion";
+  pname = "comfyui-tileddiffusion";
   version = "v0.0.1";
   src = fetchFromGitHub {
     owner = "shiimizu";

@@ -7,7 +7,7 @@ let
   fetchFromUrl = import <nix/fetchurl.nix>;
 in
 comfyuiPackages.comfyui.mkComfyUICustomNode rec {
-  pname = "comfyui_controlnet_aux";
+  pname = "comfyui-controlnet-aux";
   version = "unstable-2024-08-28";
   pyproject = true;
   src = fetchFromGitHub {

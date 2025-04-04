@@ -4,7 +4,7 @@
   fetchFromGitHub,
 }:
 comfyuiPackages.comfyui.mkComfyUICustomNode {
-  pname = "ComfyUI-Crystools";
+  pname = "comfyui-crystools";
   version = "1.22.1";
   src = fetchFromGitHub {
     owner = "crystian";

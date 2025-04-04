@@ -4,7 +4,7 @@
   fetchFromGitHub,
 }:
 comfyuiPackages.comfyui.mkComfyUICustomNode rec {
-  pname = "ComfyUI-CLIPSeg";
+  pname = "comfyui-clipseg";
   version = "unstable-2023-04-12";
   pyproject = true;
   installPhase = ''

@@ -3,7 +3,7 @@
   fetchFromGitHub,
 }:
 comfyuiPackages.comfyui.mkComfyUICustomNode {
-  pname = "ComfyUI_Comfyroll_CustomNodes";
+  pname = "comfyui-comfyroll-customnodes";
   version = "0.0.1";
   src = fetchFromGitHub {
     owner = "Suzie1";

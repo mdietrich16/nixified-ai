@@ -4,7 +4,7 @@
   fetchFromGitHub,
 }:
 comfyuiPackages.comfyui.mkComfyUICustomNode {
-  pname = "ComfyUI-WD14-Tagger";
+  pname = "comfyui-wd14-tagger";
   version = "v0.0.1";
   src = fetchFromGitHub {
     # FIXME: Also apply path as in ../comfyui-custom-scripts/default.nix
