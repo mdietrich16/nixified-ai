@@ -6,7 +6,7 @@
 comfyuiPackages.comfyui.mkComfyUICustomNode rec {
   pname = "comfyui-clipseg";
   version = "unstable-2023-04-12";
-  pyproject = true;
+  pyproject = false;
   installPhase = ''
     runHook preInstall
     mkdir -p $out
