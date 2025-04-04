@@ -1,25 +1,36 @@
-{ lib
-, fetchurl
-, buildPythonPackage
-, protobuf
-, numpy
-, opencv4
-, attrs
-, matplotlib
-, autoPatchelfHook
+{
+  lib,
+  fetchurl,
+  buildPythonPackage,
+  protobuf,
+  numpy,
+  opencv4,
+  attrs,
+  absl-py,
+  matplotlib,
+  flatbuffers,
+  autoPatchelfHook,
 }:
 
 buildPythonPackage {
   pname = "mediapipe";
-  version = "0.10.8";
+  version = "0.10.21";
   format = "wheel";
 
   src = fetchurl {
-    url = "https://files.pythonhosted.org/packages/b9/9c/91262b3c43a4938fce2349ad0acd7463770604f4d964dfaabbd070761bb9/mediapipe-0.10.8-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl";
-    sha256 = "sha256-K5u5w895+ISdtDwRk7XmIAp0BsjLVsBtyf8w2LCztbs=";
+    url = "https://files.pythonhosted.org/packages/9f/99/5da7ae7f7e25847383bc2fe5a9adc7ce150dd371682f486c0666b407cad7/mediapipe-0.10.21-cp312-cp312-manylinux_2_28_x86_64.whl";
+    sha256 = "956eb1ebc275c629e61b085b2cab89c3a5b9e93bad1bb107348d98dafb5a4bb5";
   };
 
-  propagatedBuildInputs = [ protobuf numpy opencv4 matplotlib attrs ];
+  propagatedBuildInputs = [
+    absl-py
+    attrs
+    flatbuffers
+    matplotlib
+    numpy
+    opencv4
+    protobuf
+  ];
 
   nativeBuildInputs = [ autoPatchelfHook ];
 
