@@ -15,7 +15,7 @@ comfyuiPackages.comfyui.mkComfyUICustomNode rec {
     owner = "Fannovel16";
     repo = "comfyui_controlnet_aux";
     rev = "83463c2e4b04e729268e57f638b4212e0da4badc";
-    sha256 = "";
+    sha256 = "sha256-DPK74Da6J1yVN4te6euGVhrC32wb26BW18wH6WFl0h4=";
     fetchSubmodules = true;
   };
   propagatedBuildInputs = with python3Packages; [
