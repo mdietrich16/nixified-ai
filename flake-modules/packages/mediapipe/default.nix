@@ -2,14 +2,18 @@
   lib,
   fetchurl,
   buildPythonPackage,
-  protobuf,
+  autoPatchelfHook,
+  absl-py,
+  attrs,
+  flatbuffers,
+  jax,
+  jaxlib,
+  matplotlib,
   numpy,
   opencv4,
-  attrs,
-  absl-py,
-  matplotlib,
-  flatbuffers,
-  autoPatchelfHook,
+  protobuf,
+  sentencepiece,
+  sounddevice,
 }:
 
 buildPythonPackage {
@@ -26,10 +30,14 @@ buildPythonPackage {
     absl-py
     attrs
     flatbuffers
+    jax
+    jaxlib
     matplotlib
     numpy
     opencv4
     protobuf
+    sentencepiece
+    sounddevice
   ];
 
   nativeBuildInputs = [ autoPatchelfHook ];
