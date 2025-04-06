@@ -8,7 +8,7 @@ comfyuiPackages.comfyui.mkComfyUICustomNode {
   src = fetchFromGitHub {
     owner = "Acly";
     repo = "comfyui-inpaint-nodes";
-    rev = "9927f44cb4a9878f1737cbabf8a29d2fc8182d0f";
-    hash = "sha256-FS+wDpDWboArBK2pq5Ye+eL3jNkxBoEnYnXt/TxKcKc=";
+    rev = "726e16ff2742be285b3da78b73333ba6227ad234";
+    hash = "sha256-r1q8U4V3nH2P1tlinOujeYvqceFa4uriVfHDoDathog=";
   };
 }
