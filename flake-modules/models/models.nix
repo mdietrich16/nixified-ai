@@ -296,6 +296,28 @@
     };
   };
 
+  # https://civitai.com/models/573152?modelVersionId=1569593
+  lustifySDXLNSFW_v6 = fetchResource {
+    name = "lustifySDXLNSFW_v6.safetensors";
+    # air = "urn:air:sdxl:checkpoint:civitai:573152@1569593";
+    url = "https://civitai.com/api/download/models/1569593?type=Model&format=SafeTensor&size=pruned&fp=fp16";
+    sha256 = "D7E7E35B0F60C42AD427CE81E30569A3881143ECF2F9CB50021A52947F69D22F";
+    passthru = {
+      comfyui.installPaths = [ "checkpoints/SDXL" ];
+    };
+  };
+
+  # https://civitai.com/models/428826?modelVersionId=695277
+  damnPonyxlRealistic_v30 = fetchResource {
+    name = "damnPonyxlRealistic_v30.safetensors";
+    # air = "urn:air:sdxl:checkpoint:civitai:428826@695277";
+    url = "https://civitai.com/api/download/models/695277?type=Model&format=SafeTensor&size=pruned&fp=fp16";
+    sha256 = "9B28824A9E3F38DE8172DA91F547F6C0728B202D80955705F4E5F063B9066CCD";
+    passthru = {
+      comfyui.installPaths = [ "checkpoints/Pony" ];
+    };
+  };
+
   # https://civitai.com/models/84728?modelVersionId=90072
   photon_v1 = fetchResource {
     name = "photon_v1.safetensors";
@@ -490,10 +512,19 @@
     };
   };
 
-  inpaint_v26_fooocus = fetchResource rec {
-    name = baseNameOf url;
+  inpaint_fooocus_patch = fetchResource {
+    name = "inpaint.fooocus.patch";
+    url = "https://huggingface.co/lllyasviel/fooocus_inpaint/resolve/main/inpaint.fooocus.patch";
+    sha256 = "ba2a82dec0151105cb593ba7254f58548ec6810aeb9e081c4533fb227d654476";
+    passthru = {
+      comfyui.installPaths = [ "inpaint" ];
+    };
+  };
+
+  inpaint_v26_fooocus_patch = fetchResource {
+    name = "inpaint_v26.fooocus.patch";
     url = "https://huggingface.co/lllyasviel/fooocus_inpaint/resolve/main/inpaint_v26.fooocus.patch";
-    sha256 = "sha256-+GV6AlEE4i1w+cBgY12OjCGW9DOHGi9o3ECr0hcfDVk=";
+    sha256 = "f8657a025104e22d70f9c060635d8e8c2196f433871a2f68dc40abd2171f0d59";
     passthru = {
       comfyui.installPaths = [ "inpaint" ];
     };
@@ -924,6 +955,25 @@
     };
   };
 
+  # https://civitai.com/models/332646?modelVersionId=380277
+  xxx-rating_pos_pony = fetchResource {
+    name = "xxx-rating_pos_pony.safetensors";
+    # air = "urn:air:sdxl:embedding:civitai:332646@380277";
+    url = "https://civitai.com/api/download/models/380277?type=Model&format=PickleTensor";
+    sha256 = "000E2B1616E99B089FED906202F102686D57331C2503D4A1E36753B98622FA73";
+    passthru = {
+      comfyui.installPaths = [ "embeddings" ];
+    };
+  };
+
+  xxx-rating_neg_pony = fetchResource {
+    name = "xxx-rating_neg_pony.safetensors";
+    url = "https://civitai.com/api/download/models/380277?type=Negative&format=Other";
+    sha256 = "C01180E3BCC5B645BDAD5AA9091D290417AC9CBC4BC48121FA911D19C5CAD7C2";
+    passthru = {
+      comfyui.installPaths = [ "embeddings" ];
+    };
+  };
 
   #
   stable_yogis_pdxl_pos = fetchResource {
@@ -1233,6 +1283,16 @@
     };
   };
 
+  # https://civitai.com/models/1230780/body-weight-slider-pony?modelVersionId=1386847
+  body_weight_slider_pony = fetchResource {
+    name = "body_weight_slider_pony.safetensors";
+    url = "https://civitai.com/api/download/models/1386847?type=Model&format=SafeTensor";
+    sha256 = "21F825BFB746301D89CDEBE6074D6D4CE19A62E1A77527DD322BEF6B349045E2";
+    passthru = {
+      comfyui.installPaths = [ "loras/Aesthetics" ];
+    };
+  };
+
   # https://civitai.com/models/1267943/hair-length-slider-pony-xl?modelVersionId=1430143
   hair_slider_pony = fetchResource {
     name = "hair_slider_pony.safetensors";
@@ -1275,6 +1335,411 @@
       comfyui.installPaths = [ "loras/Aesthetics" ];
     };
   };
+
+  # https://civitai.com/models/391121?modelVersionId=436356
+  muscular-slider = fetchResource {
+    name = "muscular-slider.safetensors";
+    # air = "urn:air:sdxl:lora:civitai:391121@436356";
+    url = "https://civitai.com/api/download/models/436356?type=Model&format=SafeTensor";
+    sha256 = "E1B055854014ACC8FF8A6AE1FFA5CB38764EA87D03B2066E26774AD053EA03B4";
+    passthru = {
+      comfyui.installPaths = [ "loras/Aesthetics" ];
+    };
+  };
+
+  # # Links:
+  # ## Checkpoints:
+  #    https://civitai.com/models/453428/nova-reality-xl?modelVersionId=1605991
+  #    https://civitai.com/models/1143097/willys-noob-realism?modelVersionId=1531117
+  # ## Loras:
+  #    https://civitai.com/models/1340403/wan-21-deepthroat-blowjob-fellatio-oral-lora-t2v-i2v?modelVersionId=1513684 (WAN Deepthroat T2V)
+  # ## Guides:
+  #    https://huggingface.co/Laxhar/noobai-XL-Vpred-0.5/blob/main/comfy_ui_workflow_sample.png
+  #    https://civitai.com/articles/8962
+  # deepthroatXL = fetchair {
+  #   name = "deepthroatXL.safetensors";
+  #   air = "urn:air:sdxl:lora:civitai:274845@309802";
+  #   sha256 = "41B583343921690F7BD211394CE8D1F5521242C538848D92E05D477844FECD27";
+  #   passthru = {
+  #     comfyui.installPaths = [ "loras/NSFW/Deepthroat" ];
+  #   };
+  # };
+  #
+  # irrumatio = fetchair {
+  #   name = "irrumatio.safetensors";
+  #   air = "urn:air:sdxl:lycoris:civitai:728624@814770";
+  #   sha256 = "41345B0C6E4660CDA7987EFA0AD79B7054D194CA4D1186AABBE9F47D4A5BC3F2";
+  #   passthru = {
+  #     comfyui.installPaths = [ "loras/NSFW/Deepthroat" ];
+  #   };
+  # };
+
+  # https://civitai.com/models/318208/sword-swallowing-position-pony-xl
+  sword_swallowing_position_pony = fetchResource {
+    name = "sword_swallowing_position_pony.safetensors";
+    # air = "urn:air:sdxl:lora:civitai:318208@356865";
+    url = "https://civitai.com/api/download/models/356865?type=Model&format=SafeTensor";
+    sha256 = "4AED4DE1BAFB23929240FFEEFEA0F8EEF433C45DF880302A5C01FA13BDB28AFC";
+    passthru = {
+      comfyui.installPaths = [ "loras/NSFW/Deepthroat" ];
+    };
+  };
+
+  # https://civitai.com/models/325951/sword-swallowing-position-throat-fuck-or-pony-xl-concept
+  throatfuck_pony = fetchResource {
+    name = "throatfuck_pony.safetensors";
+    # air = "urn:air:sdxl:lora:civitai:325951@365369";
+    url = "https://civitai.com/api/download/models/365369?type=Model&format=SafeTensor";
+    sha256 = "5DF35B519A8F7CB17BFDD7AB770A419436962DEB85AB38B805F023DC08F3C141";
+    passthru = {
+      comfyui.installPaths = [ "loras/NSFW/Deepthroat" ];
+    };
+  };
+
+  # between_legs_fellatio = fetchair {
+  #   name = "between_legs_fellatio.safetensors";
+  #   air = "urn:air:sdxl:lora:civitai:588511@657017";
+  #   sha256 = "F3FB9A9E6E311F739D05ACBADC2B090BD3F004F61E40166F41FDD61BAD255760";
+  #   passthru = {
+  #     comfyui.installPaths = [ "loras/NSFW/Deepthroat" ];
+  #   };
+  # };
+  #
+  # between_legs_fellatio2 = fetchair {
+  #   name = "between_legs_fellatio2.safetensors";
+  #   air = "urn:air:sdxl:lora:civitai:598927@669251";
+  #   sha256 = "58BBD0F2506B1A6DD03D1B789DF2F47307842079AF554CFF1B551B738485F502";
+  #   passthru = {
+  #     comfyui.installPaths = [ "loras/NSFW/Deepthroat" ];
+  #   };
+  # };
+
+  # https://civitai.com/models/161161?modelVersionId=407574
+  round_breasts = fetchResource {
+    name = "round_breasts.safetensors";
+    # air = "urn:air:sdxl:lora:civitai:161161@407574";
+    url = "https://civitai.com/api/download/models/407574?type=Model&format=SafeTensor";
+    sha256 = "94E36BFDB9CC94F2452391C91E521AE5BE3874D040B528F42FBB96D48789B9D7";
+    passthru = {
+      comfyui.installPaths = [ "loras/NSFW/Breasts" ];
+    };
+  };
+
+  # https://civitai.com/models/1121948/breast-size-slider?modelVersionId=1260971
+  breast-size-slider = fetchResource {
+    name = "breast-size-slider.safetensors";
+    # air = "urn:air:sdxl:lora:civitai:1121948@1260971";
+    url = "https://civitai.com/api/download/models/1260971?type=Model&format=SafeTensor";
+    sha256 = "C4E566335C1253A19A3E9A87D2BA43F99476B731956294FC7495535C67A817C7";
+    passthru = {
+      comfyui.installPaths = [ "loras/NSFW/Breasts" ];
+    };
+  };
+
+  # https://civitai.com/models/407381?modelVersionId=1211801
+  arcane_pony_v2_exmx = fetchResource {
+    name = "arcane_pony_v2_exmx.safetensors";
+    # air = "urn:air:sdxl:lora:civitai:407381@1211801";
+    url = "https://civitai.com/api/download/models/1211801?type=Model&format=SafeTensor";
+    sha256 = "A47B4297462D5FBFBADF5BE778FECF6F59B3799705C8D94E23C85BF90921833D";
+    passthru = {
+      comfyui.installPaths = [ "loras/Characters/Arcane" ];
+    };
+  };
+
+  # https://civitai.com/models/407381?modelVersionId=786709
+  arcane_flux_v05_exmx = fetchResource {
+    name = "arcane_flux_v05_exmx.safetensors";
+    # air = "urn:air:flux1:lora:civitai:407381@786709";
+    url = "https://civitai.com/api/download/models/786709?type=Model&format=SafeTensor";
+    sha256 = "5191AB12A984677EBC1EBC5DB0783495B8BE4011E96350B6F4AA1FBAF6790976";
+    passthru = {
+      comfyui.installPaths = [ "loras/Characters/Arcane" ];
+    };
+  };
+
+  # https://civitai.com/models/186577?modelVersionId=449572
+  viponylora = fetchResource {
+    name = "viponylora.safetensors";
+    #   air = "urn:air:sdxl:lora:civitai:186577@449572";
+    url = "https://civitai.com/api/download/models/449572?type=Model&format=SafeTensor";
+    sha256 = "E0EDB3856E9665043DA14A54ACC6237D96A29F88440C84473D49A0CBE3946EA6";
+    passthru = {
+      comfyui.installPaths = [ "loras/Characters/Arcane" ];
+    };
+  };
+
+  # https://civitai.com/models/414554/vi-arcane-ponydiffusion-xl
+  ViPDXL = fetchResource {
+    name = "ViPDXL.safetensors";
+    # air = "urn:air:sdxl:lora:civitai:414554@461956";
+    url = "https://civitai.com/api/download/models/461956?type=Model&format=SafeTensor";
+    sha256 = "5CAEBD2E6D9B9209B764BBE53E66FA72D6AD33CD4C4D9A450D51A70268150653";
+    passthru = {
+      comfyui.installPaths = [ "loras/Characters/Arcane" ];
+    };
+  };
+
+  # https://civitai.com/models/307385?modelVersionId=1111575
+  vi_realistic_flux_v1 = fetchResource {
+    name = "vi_realistic_flux_v1.safetensors";
+    # air = "urn:air:flux1:lora:civitai:307385@1111575";
+    url = "https://civitai.com/api/download/models/1111575?type=Model&format=SafeTensor";
+    sha256 = "A54D2A89F47B4CE2E2D412F00AF4EEC2ADD56DCA3F861A3B6AC0FDAE223D0DFC";
+    passthru = {
+      comfyui.installPaths = [ "loras/Characters/Arcane" ];
+    };
+  };
+
+  # https://civitai.com/models/307385?modelVersionId=365730
+  vi_realistic_sdxl_v2 = fetchResource {
+    name = "vi_realistic_sdxl_v2.safetensors";
+    # air = "urn:air:sdxl:lora:civitai:307385@365730";
+    url = "https://civitai.com/api/download/models/365730?type=Model&format=SafeTensor";
+    sha256 = "24E286001E116BEC6709B6E8B649549C5946209C50A3D5A4EDE4297132F48AAF";
+    passthru = {
+      comfyui.installPaths = [ "loras/Characters/Arcane" ];
+    };
+  };
+
+  # https://civitai.com/models/1046185/caitvi-pony-xl-lora-caitlyn-x-vi-arcane
+  caitvi_pony_v1 = fetchResource {
+    name = "caitvi_pony_v1.safetensors";
+    # air = "urn:air:sdxl:lora:civitai:1046185@1173823";
+    url = "https://civitai.com/api/download/models/1173823?type=Model&format=SafeTensor";
+    sha256 = "C0376FCAE2FB8781F388FDF28C8500DB0026590F385534DF24F34672223DF392";
+    passthru = {
+      comfyui.installPaths = [ "loras/Characters/Arcane" ];
+    };
+  };
+
+  # https://civitai.com/models/99882/arcane-caitlyn-15-pony-illustrious
+  arcane_caitlyn_il_v1 = fetchResource {
+    name = "arcane_caitlyn_il_v1.safetensors";
+    # air = "urn:air:sdxl:lora:civitai:99882@1068827";
+    url = "https://civitai.com/api/download/models/1068827?type=Model&format=SafeTensor";
+    sha256 = "96BB6FA30610610E46CCEA2FF74507BB33CDB77D2047704319001AA37A0650C3";
+    passthru = {
+      comfyui.installPaths = [ "loras/Characters/Arcane" ];
+    };
+  };
+
+  # https://civitai.com/models/99882?modelVersionId=717421
+  arcane_caitlyn_pony_v1 = fetchResource {
+    name = "arcane_caitlyn_pony_v1.safetensors";
+    # air = "urn:air:sdxl:lora:civitai:99882@717421";
+    url = "https://civitai.com/api/download/models/717421?type=Model&format=SafeTensor";
+    sha256 = "25B0BCD9B4F11FF07A527297B1CE003D4AA0E03149F19089C348D15447853696";
+    passthru = {
+      comfyui.installPaths = [ "loras/Characters/Arcane" ];
+    };
+  };
+
+  # https://civitai.com/models/1130688/vi-arcane-lora-illustrious-sdxl
+  ydstlvi_il_v1 = fetchResource {
+    name = "ydstlvi_il_v1.safetensors";
+    # air = "urn:air:sdxl:lora:civitai:1130688@1271095";
+    url = "https://civitai.com/api/download/models/1271095?type=Model&format=SafeTensor";
+    sha256 = "594CFE5A2E416B3B3EF314BDF0EBAE32D399E970D91016666D81CA7B5DEEC20A";
+    passthru = {
+      comfyui.installPaths = [ "loras/Characters/Arcane" ];
+    };
+  };
+
+  # https://civitai.com/models/980292/vi-arcane-league-of-legends-flux-lora
+  vi_arcane_lol_flux_v1 = fetchResource {
+    name = "vi_arcane_lol_flux_v1.safetensors";
+    # air = "urn:air:flux1:lora:civitai:980292@1097994";
+    url = "https://civitai.com/api/download/models/1097994?type=Model&format=SafeTensor";
+    sha256 = "4C17CED68223292A13E7DCBABC94AF2ABF203FE9AB673C728BF3E03DD12E9DBE";
+    passthru = {
+      comfyui.installPaths = [ "loras/Characters/Arcane" ];
+    };
+  };
+
+  # https://civitai.com/models/631671?modelVersionId=706161
+  alvi_pony = fetchResource {
+    name = "alvi_pony.safetensors";
+    # air = "urn:air:sdxl:lora:civitai:631671@706161";
+    url = "https://civitai.com/api/download/models/706161?type=Model&format=SafeTensor";
+    sha256 = "3339A9E12B4A558FCBE8E32E384173402BF65D611DFB3B76CEE30DD19870B126";
+    passthru = {
+      comfyui.installPaths = [ "loras/Characters/Arcane" ];
+    };
+  };
+
+  # https://civitai.com/models/144470?modelVersionId=160579
+  vi-offset = fetchResource {
+    name = "vi-offset.safetensors";
+    # air = "urn:air:sdxl:lora:civitai:144470@160579";
+    url = "https://civitai.com/api/download/models/160579?type=Model&format=SafeTensor";
+    sha256 = "2D92AF994A65F9DF746BDE88AB5D2B33FB3BD36E0E766F46628BD40F110F0554";
+    passthru = {
+      comfyui.installPaths = [ "loras/Characters/Arcane" ];
+    };
+  };
+
+  # dildo-riding-ponyxl-lora-nochekaiser = fetchair {
+  #   name = "dildo-riding-ponyxl-lora-nochekaiser.safetensors";
+  #   air = "urn:air:sdxl:lora:civitai:782608@875215";
+  #   sha256 = "DC23BD476201A86B9CB384052F43C592816EB5580AE619292497AC4838C43030";
+  #   passthru = {
+  #     comfyui.installPaths = [ "loras/NSFW/Dildo" ];
+  #   };
+  # };
+  #
+  # breast_bondage_pony_v1 = fetchair {
+  #   name = "breast_bondage_pony_v1.safetensors";
+  #   air = "urn:air:sdxl:lora:civitai:369943@413308";
+  #   sha256 = "57CE39B52BE9BE67E8757BE5040D63A18F75E90164C0C18FE39DE469439465CC";
+  #   passthru = {
+  #     comfyui.installPaths = [ "loras/NSFW/Bondage" ];
+  #   };
+  # };
+  #
+  # rope_bondagebound_r2 = fetchair {
+  #   name = "rope_bondagebound_r2.safetensors";
+  #   air = "urn:air:sdxl:lora:civitai:780771@873191";
+  #   sha256 = "D9A0B4918396E38DD14E85DA084F10A83DDE10A9D17DBBD72E16481CB09FFA87";
+  #   passthru = {
+  #     comfyui.installPaths = [ "loras/NSFW/Bondage" ];
+  #   };
+  # };
+  #
+  # joshek_nippleclamps_pony = fetchair {
+  #   name = "joshek_nippleclamps_pony.safetensors";
+  #   air = "urn:air:sdxl:lora:civitai:392897@440403";
+  #   sha256 = "5F6B36170385F8D8EFAEE7F03D73A15BEBAE6CCE2F300FBB9B7F238531F8A3E8";
+  #   passthru = {
+  #     comfyui.installPaths = [ "loras/NSFW/Clothing" ];
+  #   };
+  # };
+  #
+  # shibari = fetchair {
+  #   name = "shibari.safetensors";
+  #   air = "urn:air:sdxl:lora:civitai:833474@932464";
+  #   sha256 = "DB126A7F7D56AA76F2901D8A3465BF205C466F2664E8A54944C203981200B804";
+  #   passthru = {
+  #     comfyui.installPaths = [ "loras/NSFW/Bondage" ];
+  #   };
+  # };
+  #
+  # takate_kote_pony = fetchair {
+  #   name = "takate_kote_pony.safetensors";
+  #   air = "urn:air:sdxl:lora:civitai:375034@418838";
+  #   sha256 = "AD57BE0A8B0A4331148A0EE08BC6B709FD30410943F04B6698FBAC3B1AB0CD4A";
+  #   passthru = {
+  #     comfyui.installPaths = [ "loras/NSFW/Bondage" ];
+  #   };
+  # };
+  #
+  # Pony_bondage_ebi_tie_ponysit = fetchair {
+  #   name = "Pony_bondage_ebi_tie_ponysit.safetensors";
+  #   air = "urn:air:sdxl:lora:civitai:712180@796560";
+  #   sha256 = "ECD60F738FC98B4FCD9195D90FA6C26FDDA0589A6F80A6C02B2F5C61AED65D72";
+  #   passthru = {
+  #     comfyui.installPaths = [ "loras/NSFW/Bondage" ];
+  #   };
+  # };
+  #
+  # Pony_bondage_post = fetchair {
+  #   name = "Pony_bondage_post.safetensors";
+  #   air = "urn:air:sdxl:lora:civitai:621064@694304";
+  #   sha256 = "CFE7B9134014ABE1522E369C72D3D9867FB7840118923B77118A29AEF02AC626";
+  #   passthru = {
+  #     comfyui.installPaths = [ "loras/NSFW/Bondage" ];
+  #   };
+  # };
+  #
+  # joshek_hogtied_pony = fetchair {
+  #   name = "joshek_hogtied_pony.safetensors";
+  #   air = "urn:air:sdxl:lora:civitai:351392@893741";
+  #   sha256 = "8C13390807041523913A437C95DFC53D665F4F8BE87927DFABEC3108F411E8C9";
+  #   passthru = {
+  #     comfyui.installPaths = [ "loras/NSFW/Bondage" ];
+  #   };
+  # };
+  #
+  # joshek_kneeling_hands_on_thighs_pony = fetchair {
+  #   name = "joshek_kneeling_hands_on_thighs_pony.safetensors";
+  #   air = "urn:air:sdxl:lora:civitai:384937@429586";
+  #   sha256 = "3488C4DCBF15187D8BC3595F980222876616725496399C01D90D0EA1C11737B2";
+  #   passthru = {
+  #     comfyui.installPaths = [ "loras/Poses" ];
+  #   };
+  # };
+  #
+  # joshek_arms_behind_head_pony = fetchair {
+  #   name = "joshek_arms_behind_head_pony.safetensors";
+  #   air = "urn:air:sdxl:lora:civitai:384937@433815";
+  #   sha256 = "BE60B117C273ECF7942E138EDE796833A141616DF62B4A20CCBC64490E7DA628";
+  #   passthru = {
+  #     comfyui.installPaths = [ "loras/Poses" ];
+  #   };
+  # };
+  #
+  # joshek_bowing_down_pony = fetchair {
+  #   name = "joshek_bowing_down_pony.safetensors";
+  #   air = "urn:air:sdxl:lora:civitai:384937@436238";
+  #   sha256 = "87D5FFC214FCDED94080634EE8020927333CFB05AB2565C192111DD08FD36246";
+  #   passthru = {
+  #     comfyui.installPaths = [ "loras/Poses" ];
+  #   };
+  # };
+  #
+  # joshek_crawling_all_fours_pony = fetchair {
+  #   name = "joshek_crawling_all_fours_pony.safetensors";
+  #   air = "urn:air:sdxl:lora:civitai:384937@431510";
+  #   sha256 = "9200E650211DC46FA3734A0E13A8965B41F681011D94002CAA90B52ADBBE26A9";
+  #   passthru = {
+  #     comfyui.installPaths = [ "loras/Poses" ];
+  #   };
+  # };
+  #
+  # joshek_standingspreadeagle_pony = fetchair {
+  #   name = "joshek_standingspreadeagle_pony.safetensors";
+  #   air = "urn:air:sdxl:lora:civitai:384937@435941";
+  #   sha256 = "C427D4D759F8471B5C07A5D9909460D852784B3C3F1DFD0A1353DF45864DBE88";
+  #   passthru = {
+  #     comfyui.installPaths = [ "loras/Poses" ];
+  #   };
+  # };
+  #
+  # joshek_lying_spreadeagle_pony = fetchair {
+  #   name = "joshek_lying_spreadeagle_pony.safetensors";
+  #   air = "urn:air:sdxl:lora:civitai:384937@438849";
+  #   sha256 = "6C27F75511745FBE6C5DC5F8A3218FA436A18D89C0AF634A4D680D8FE064FE3D";
+  #   passthru = {
+  #     comfyui.installPaths = [ "loras/Poses" ];
+  #   };
+  # };
+  #
+  # joshek_strappado_pony = fetchair {
+  #   name = "joshek_strappado_pony.safetensors";
+  #   air = "urn:air:sdxl:lora:civitai:351403@393033";
+  #   sha256 = "A631F7BC18489C44B32BFE8E5080806AFA67E4EC6440A6346D1E03210F1FBB7D";
+  #   passthru = {
+  #     comfyui.installPaths = [ "loras/NSFW/Bondage" ];
+  #   };
+  # };
+  #
+  # joshek_sidesuspension_pony = fetchair {
+  #   name = "joshek_sidesuspension_pony.safetensors";
+  #   air = "urn:air:sdxl:lora:civitai:384952@429603";
+  #   sha256 = "0D7EA2E982D3D62BE9F507C07A39CE5EC5F5DD84102CF4C9E9F40E221A284708";
+  #   passthru = {
+  #     comfyui.installPaths = [ "loras/NSFW/Bondage" ];
+  #   };
+  # };
+  #
+  # garter_belts_pony_v1 = fetchair {
+  #   name = "garter_belts_pony_v1.safetensors";
+  #   air = "urn:air:sdxl:lora:civitai:545762@608183";
+  #   sha256 = "DE9F8CA6E212A3038C764D3008221B193000E1655DC700CF71A1DF8799135DE1";
+  #   passthru = {
+  #     comfyui.installPaths = [ "loras/NSFW/Clothing" ];
+  #   };
+  # };
 
   Llama-32-11B-Vision-Instruct-nf4 = fetchResource {
     name = "Llama-3.2-11B-Vision-Instruct-nf4.safetensors";
