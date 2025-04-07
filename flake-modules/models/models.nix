@@ -404,6 +404,15 @@
     };
   };
 
+  Real_ESRGAN_x4plus = fetchResource rec {
+    name = baseNameOf url;
+    url = "https://huggingface.co/spaces/Marne/Real-ESRGAN/resolve/main/RealESRGAN_x4plus.pth";
+    sha256 = "4fa0d38905f75ac06eb49a7951b426670021be3018265fd191d2125df9d682f1";
+    passthru = {
+      comfyui.installPaths = [ "upscale_models" ];
+    };
+  };
+
   OmniSR_X2_DIV2K = fetchResource rec {
     name = baseNameOf url;
     url = "https://huggingface.co/Acly/Omni-SR/resolve/main/OmniSR_X2_DIV2K.safetensors";
