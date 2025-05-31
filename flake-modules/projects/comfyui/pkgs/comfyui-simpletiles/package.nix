@@ -3,6 +3,8 @@
   fetchFromGitHub,
 }:
 comfyuiPackages.comfyui.mkComfyUICustomNode {
+  dontBuild = true;
+  dontConfigure = true;
   pname = "comfyui-simpletiles";
   name = "ComfyUI_SimpleTiles";
   version = "v0.0.1";

@@ -4,6 +4,8 @@
   fetchFromGitHub,
 }:
 comfyuiPackages.comfyui.mkComfyUICustomNode {
+  dontBuild = true;
+  dontConfigure = true;
   pname = "comfyui-ipadapter-plus";
   version = "unstable-2024-06-05";
   src = fetchFromGitHub {

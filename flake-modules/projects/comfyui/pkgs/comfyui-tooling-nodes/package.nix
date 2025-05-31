@@ -3,6 +3,8 @@
   fetchFromGitHub,
 }:
 comfyuiPackages.comfyui.mkComfyUICustomNode {
+  dontBuild = true;
+  dontConfigure = true;
   pname = "comfyui-tooling-nodes";
   version = "unstable-2024-06-20";
   src = fetchFromGitHub {

@@ -7,6 +7,8 @@ let
   segment-anything = python3Packages.callPackage ../../../../packages/segment-anything { };
 in
 comfyuiPackages.comfyui.mkComfyUICustomNode {
+  dontBuild = true;
+  dontConfigure = true;
   pname = "comfyui-impact-pack";
   version = "unstable-2024-09-09";
   pyproject = false;

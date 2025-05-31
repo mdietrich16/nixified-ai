@@ -3,6 +3,8 @@
   fetchFromGitHub,
 }:
 comfyuiPackages.comfyui.mkComfyUICustomNode {
+  dontBuild = true;
+  dontConfigure = true;
   pname = "comfyui-tiledksampler";
   version = "v0.0.1";
   src = fetchFromGitHub {

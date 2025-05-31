@@ -4,6 +4,8 @@
   fetchFromGitHub,
 }:
 comfyuiPackages.comfyui.mkComfyUICustomNode {
+  dontBuild = true;
+  dontConfigure = true;
   pname = "comfyui-wd14-tagger";
   version = "v0.0.1";
   src = fetchFromGitHub {

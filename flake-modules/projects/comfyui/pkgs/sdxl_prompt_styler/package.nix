@@ -3,6 +3,8 @@
   fetchFromGitHub,
 }:
 comfyuiPackages.comfyui.mkComfyUICustomNode {
+  dontBuild = true;
+  dontConfigure = true;
   pname = "sdxl_prompt_styler";
   version = "v0.0.1";
   src = fetchFromGitHub {

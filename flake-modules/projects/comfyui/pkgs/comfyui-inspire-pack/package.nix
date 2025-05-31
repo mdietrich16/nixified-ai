@@ -4,6 +4,8 @@
   fetchFromGitHub,
 }:
 comfyuiPackages.comfyui.mkComfyUICustomNode rec {
+  dontConfigure = true;
+  dontBuild = true;
   pname = "comfyui-inspire-pack";
   version = "v1.2.9";
   src = fetchFromGitHub {

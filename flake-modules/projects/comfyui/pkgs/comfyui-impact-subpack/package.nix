@@ -4,6 +4,8 @@
   fetchFromGitHub,
 }:
 comfyuiPackages.comfyui.mkComfyUICustomNode {
+  dontBuild = true;
+  dontConfigure = true;
   pname = "comfyui-impact-subpack";
   version = "v1.2.9";
   src = fetchFromGitHub {

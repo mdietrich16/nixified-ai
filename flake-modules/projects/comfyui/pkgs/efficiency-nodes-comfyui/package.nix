@@ -4,6 +4,8 @@
   fetchFromGitHub,
 }:
 comfyuiPackages.comfyui.mkComfyUICustomNode {
+  dontBuild = true;
+  dontConfigure = true;
   pname = "efficiency-nodes-comfyui";
   version = "0.0.1";
   src = fetchFromGitHub {

@@ -24,6 +24,8 @@ comfyuiPackages.comfyui.mkComfyUICustomNode (
     pysssss-config = writeText "pysssss.json" (lib.generators.toJSON { } custom-scripts-data);
   in
   rec {
+    dontConfigure = true;
+    dontBuild = true;
     pname = "comfyui-custom-scripts";
     version = "v0.0.1";
     src = fetchFromGitHub {

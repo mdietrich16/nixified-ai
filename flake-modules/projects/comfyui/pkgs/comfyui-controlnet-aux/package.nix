@@ -8,6 +8,8 @@ let
   mediapipe = python3Packages.callPackage ../../../../packages/mediapipe { };
 in
 comfyuiPackages.comfyui.mkComfyUICustomNode rec {
+  dontConfigure = true;
+  dontBuild = true;
   pname = "comfyui-controlnet-aux";
   version = "unstable-2024-08-28";
   pyproject = true;

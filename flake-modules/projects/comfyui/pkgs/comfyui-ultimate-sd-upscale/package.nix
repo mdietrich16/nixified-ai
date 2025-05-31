@@ -3,6 +3,8 @@
   fetchFromGitHub,
 }:
 comfyuiPackages.comfyui.mkComfyUICustomNode {
+  dontBuild = true;
+  dontConfigure = true;
   pname = "comfyui-ultimate-sd-upscale";
   version = "unstable-2024-08-16";
   src = fetchFromGitHub {

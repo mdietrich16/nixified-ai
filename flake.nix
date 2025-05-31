@@ -37,6 +37,12 @@
       url = "github:hercules-ci/hercules-ci-effects";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    # For better development experience
+    treefmt-nix = {
+      url = "github:numtide/treefmt-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
   outputs =
     {
@@ -46,34 +52,63 @@
     }@inputs:
     flake-parts.lib.mkFlake { inherit inputs; } {
       systems = [ "x86_64-linux" ];
-      perSystem = { system, ... }: let
-        common = {
-          overlays = [
-            inputs.self.overlays.comfyui
-            inputs.self.overlays.models
-            inputs.self.overlays.fetchers
-          ];
-          inherit system;
+      perSystem =
+        { system, ... }:
+        let
+          common = {
+            overlays = [
+              inputs.self.overlays.comfyui
+              inputs.self.overlays.models
+              inputs.self.overlays.fetchers
+            ];
+            inherit system;
+          };
+        in
+        {
+          _module.args.rocmPkgs = import inputs.nixpkgs (
+            {
+              config = {
+                rocmSupport = true;
+                allowUnfree = true;
+              };
+            }
+            // common
+          );
+          _module.args.nvidiaPkgs = import inputs.nixpkgs (
+            {
+              config = {
+                cudaSupport = true;
+                allowUnfree = true;
+              };
+            }
+            // common
+          );
+          _module.args.pkgs = import inputs.nixpkgs (
+            {
+            }
+            // common
+          );
+
+          # Formatting rules
+          treefmt = {
+            projectRootFile = "flake.nix";
+            settings.global.excludes = [
+              ".backup/*"
+              ".config/*"
+            ];
+            programs = {
+              nixfmt.enable = true;
+              deadnix = {
+                enable = true;
+              };
+              statix.enable = true;
+            };
+          };
         };
-      in {
-        _module.args.rocmPkgs = import inputs.nixpkgs ({
-          config = {
-            rocmSupport = true;
-            allowUnfree = true;
-          };
-        } // common);
-        _module.args.nvidiaPkgs = import inputs.nixpkgs ({
-          config = {
-            cudaSupport = true;
-            allowUnfree = true;
-          };
-        } // common);
-        _module.args.pkgs = import inputs.nixpkgs ({
-        } // common);
-      };
       imports = [
         ./flake-modules
         hercules-ci-effects.flakeModule
+        inputs.treefmt-nix.flakeModule
       ];
     };
 }
